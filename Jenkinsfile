@@ -101,7 +101,7 @@ spec:
                     withCredentials([file(credentialsId: 'gcp_sa_key', variable: 'GC_KEY')]) {
                         sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
                         sh("gcloud auth configure-docker")
-                        def backendImage = docker.build("${_gcp_repo}:${_git_commit}", ".")
+                        def backendImage = docker.build("${_gcp_repo}:${_git_commit}", "${_build_args} .")
                         backendImage.push()
                     }
                 }
