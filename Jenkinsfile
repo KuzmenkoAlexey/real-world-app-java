@@ -12,6 +12,8 @@ labels:
   component: ci
 spec:
   serviceAccountName: jenkins-robot
+  hostNetwork: true
+  dnsPolicy: ClusterFirstWithHostNet
   containers:
   - name: docker
     image: google/cloud-sdk:368.0.0
